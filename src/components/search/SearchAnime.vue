@@ -34,9 +34,7 @@ const fetchGenre = async () => {
   } catch (error) {
     console.log("Cant fetching genre");
   } finally {
-    setTimeout(() => {
-      props.loading = false;
-    }, 3000);
+    props.loading = false;
   }
 };
 

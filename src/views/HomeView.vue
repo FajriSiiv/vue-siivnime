@@ -95,9 +95,7 @@ const fetchAnime = async () => {
   } catch (err) {
     error.value = err.message;
   } finally {
-    setTimeout(() => {
-      loading.value = false;
-    }, 3000);
+    loading.value = false;
   }
 };
 
@@ -191,9 +189,22 @@ watch([page, category, searchAnime, genre], fetchAnime);
     />
   </div>
 
-  <h2 v-if="error" class="text-3xl text-rose-500">{{ error }}</h2>
+  <h2
+    v-if="error"
+    class="text-5xl text-rose-500 font-semibold uppercase w-full flex justify-center items-center text-center min-h-[500px]"
+  >
+    {{ error }}
+  </h2>
 
-  <div class="grid gap-5 h-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+  <div
+    :class="[
+      'grid gap-5 h-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
+      animes.length === 0 && !loading
+        ? 'w-full !flex justify-center items-center text-center min-h-[500px]'
+        : '',
+    ]"
+    v-if="!error"
+  >
     <LoadingCard
       v-if="loading"
       v-for="(card, index) in [...Array(6)]"
@@ -201,7 +212,7 @@ watch([page, category, searchAnime, genre], fetchAnime);
     />
     <h2
       v-else-if="animes.length === 0"
-      class="text-3xl text-rose-500 font-bold"
+      class="text-5xl text-rose-500 font-semibold uppercase"
     >
       No data anime
     </h2>

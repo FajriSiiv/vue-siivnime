@@ -23,9 +23,7 @@ const fetchDetailAnime = async () => {
   } catch (error) {
     console.log("error fetching detail anime");
   } finally {
-    setTimeout(() => {
-      loading.value = false;
-    }, 3000);
+    loading.value = false;
   }
 };
 
