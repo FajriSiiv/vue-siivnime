@@ -31,7 +31,7 @@ const props = defineProps({
           </span>
         </ListboxButton>
         <ListboxOptions
-          class="absolute mt-1 max-h-60 w-full bg-white py-1 text-base shadow-lg ring-1 ring-black/5"
+          class="absolute mt-1 max-h-60 w-full bg-white py-1 text-base shadow-lg ring-1 ring-black/5 z-50"
         >
           <ListboxOption
             v-for="(cate, index) in props.animeCategory"

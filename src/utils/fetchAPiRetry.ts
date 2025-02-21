@@ -5,7 +5,6 @@ async function fetchWithRetry(url: string, retries = 3, delay = 3000) {
 
       if (!response.ok) {
         if (response.status === 429 && attempt < retries) {
-          console.warn(`Rate limit reached. Retrying in ${delay / 1000}s...`);
           await new Promise((resolve) => setTimeout(resolve, delay));
           delay *= 2;
           continue;

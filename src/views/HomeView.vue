@@ -172,7 +172,7 @@ watch([page, category, searchAnime, genre], fetchAnime);
 </script>
 
 <template>
-  <div class="mb-5 flex flex-col gap-y-5">
+  <div class="mb-5 flex flex-col gap-y-5 z-50">
     <SelectCategory
       v-model:category="category"
       :loading="loading"
