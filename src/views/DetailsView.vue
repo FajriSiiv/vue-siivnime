@@ -43,11 +43,6 @@ onMounted(() => {
     <div
       class="flex-[2] overflow-hidden w-full min-w-full h-[500px] sm:min-w-[300px]"
     >
-      <!-- <img
-        :src="anime?.images.jpg?.large_image_url"
-        :alt="anime?.title"
-        class="object-cover w-full"
-      /> -->
       <LazyLoadImage
         :src="anime?.images.webp?.large_image_url"
         :placeholder="anime?.images.webp?.small_image_url"
@@ -159,6 +154,17 @@ onMounted(() => {
               >{{ endings }}</span
             >
           </p>
+        </div>
+        <div class="rounded-md overflow-hidden w-fit">
+          <iframe
+            :src="anime?.trailer.embed_url"
+            :title="anime?.title"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            class="rounded-md overflow-hidden min-w-[400px] min-h-[300px] md:min-w-[600px]"
+          >
+          </iframe>
         </div>
       </div>
     </div>

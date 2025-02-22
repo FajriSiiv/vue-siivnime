@@ -7,7 +7,7 @@ import {
 } from "@headlessui/vue";
 import BasicButton from "../button/BasicButton.vue";
 import { ChevronsUpDownIcon } from "lucide-vue-next";
-import { defineProps, defineEmits, watch, onMounted, ref } from "vue";
+import { defineProps, defineEmits, watch, onMounted, ref, computed } from "vue";
 import { getGenresAnime } from "@/api/anime";
 
 const props = defineProps({
@@ -44,11 +44,14 @@ const updateSearchAnime = (event) =>
 const updateGenre = (value) => {
   selected.value = value;
   emit("update:selectedGenre", value);
-  console.log("Genre yang dipilih:", value);
 };
 
+const isValid = computed(() => selected.value !== 0 || props.tempSearch !== "");
+
 const handleSearchAnime = () => {
-  emit("submit");
+  if (isValid.value) {
+    emit("submit");
+  }
 };
 
 onMounted(fetchGenre);
@@ -58,6 +61,9 @@ watch(
     selected.value = newVal;
   }
 );
+watch(props.tempSearch, (newValue) => {
+  emit("update:tempSearch", newValue);
+});
 </script>
 
 <template>
@@ -161,6 +167,11 @@ watch(
       </Listbox>
     </div>
 
-    <BasicButton name="Search" class="h-[38px] flex items-center" />
+    <BasicButton
+      name="Search"
+      class="h-[38px] flex items-center"
+      :disabled="props.loading || !isValid"
+      type="submit"
+    />
   </form>
 </template>

@@ -9,7 +9,8 @@ import { RouterLink } from "vue-router";
     <p class="text-2xl font-bold">Siivanime</p>
 
     <ul class="flex justify-center items-center gap-5">
-      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/">Anime</RouterLink>
+      <RouterLink to="/people">People</RouterLink>
     </ul>
   </nav>
 </template>

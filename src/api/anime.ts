@@ -56,3 +56,17 @@ export const getAnimeByID = async (id: string) => {
 
   return fetchWithRetry(url);
 };
+
+export const getPeoples = async (page = 1, searchPeople?: string) => {
+  const url = `${BASE_URL}/people?limit=24&page=${page}${
+    searchPeople ? `&q=${searchPeople}` : ""
+  }`;
+
+  return fetchWithRetry(url);
+};
+
+export const getPeopleByID = async (id: string) => {
+  const url = `${BASE_URL}/people/${id}/full`;
+
+  return fetchWithRetry(url);
+};
